@@ -5,8 +5,7 @@ import 'package:walmart/screens/password_screens/password_mobile_form.dart';
 class PasswordTablet extends StatefulWidget {
   final String callback;
 
-  const PasswordTablet({Key? key, Key? key, required this.callback})
-      : super(key: key);
+  const PasswordTablet({Key? key, required this.callback}) : super(key: key);
 
   @override
   State<PasswordTablet> createState() => _PasswordTabletState();

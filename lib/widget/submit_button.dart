@@ -11,7 +11,6 @@ class SubmitButton extends StatefulWidget {
 
   const SubmitButton({
     Key? key,
-    Key? key,
     required this.handleLogin,
     required this.formKey,
     required this.emailController,

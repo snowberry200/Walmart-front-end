@@ -11,7 +11,6 @@ class SignUpButton extends StatefulWidget {
   final TextEditingController passwordController;
   const SignUpButton({
     Key? key,
-    Key? key,
     required this.formkey,
     required this.nameController,
     required this.emailController,

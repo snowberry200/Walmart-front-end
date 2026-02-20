@@ -15,7 +15,6 @@ class PasswordMobileForm extends StatefulWidget {
   final String callback;
   const PasswordMobileForm({
     Key? key,
-    Key? key,
     required this.callback,
   }) : super(key: key);
 
@@ -24,6 +23,9 @@ class PasswordMobileForm extends StatefulWidget {
 }
 
 class _PasswordMobileFormState extends State<PasswordMobileForm> {
+  final GlobalKey<PasswordTextfieldState> passwordKey = GlobalKey();
+  TextEditingController get passwordController =>
+      passwordKey.currentState?.passwordController ?? TextEditingController();
   Widget signinButton(AuthState state) {
     return Center(
       child: state.isLoading == true
@@ -175,7 +177,10 @@ class _PasswordMobileFormState extends State<PasswordMobileForm> {
                               SizedBox(
                                 height: 20,
                               ),
-                              PasswordTextfield(key: passwordControllerKey),
+                              PasswordTextfield(
+                                key: passwordControllerKey,
+                                controller: passwordController,
+                              ),
                               SizedBox(
                                 height: 20,
                               ),

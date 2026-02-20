@@ -6,7 +6,6 @@ class NameTextFormWidget extends StatefulWidget {
 
   const NameTextFormWidget({
     Key? key,
-    Key? key,
     required this.nameController,
   }) : super(key: key);
 
@@ -30,7 +29,7 @@ class NameTextFormWidgetState extends State<NameTextFormWidget> {
         return StatementValidator.validateName(name: name);
       },
       textAlign: TextAlign.start,
-      controller: widget.nameController,
+      controller: nameController,
       decoration: InputDecoration(
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),

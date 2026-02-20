@@ -20,8 +20,9 @@ class _FormWidgetState extends State<FormWidget> {
   final GlobalKey<FormState> formKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
+  final GlobalKey<PasswordTextfieldState> passwordKey = GlobalKey();
+  TextEditingController get passwordController =>
+      passwordKey.currentState?.passwordController ?? TextEditingController();
   void _swap() {
     // Dispatch event to toggle form mode
     context.read<AuthBloc>().add(ToggleFormModeEvent());
@@ -64,7 +65,8 @@ class _FormWidgetState extends State<FormWidget> {
                   nameController: nameController,
                 ),
                 const SizedBox(height: 20),
-                PasswordTextfield(),
+                PasswordTextfield(
+                    controller: passwordController, key: passwordKey),
                 const SizedBox(height: 20),
               ],
               const SizedBox(height: 25),
