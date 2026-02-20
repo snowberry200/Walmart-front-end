@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:walmart/firebase_options.dart';
 import 'layout/layout.dart';
@@ -9,7 +9,9 @@ void main() async {
 
   runApp(
     const MaterialApp(
-        debugShowCheckedModeBanner: false, home: AuthenticateWrapper()),
+      debugShowCheckedModeBanner: false,
+      home: AuthenticateWrapper(),
+    ),
   );
   //AuthenticateWrapper()));
 }

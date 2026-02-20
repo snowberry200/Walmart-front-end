@@ -12,6 +12,7 @@ import '../../widget/others.dart';
 class MobileScreen extends StatefulWidget {
   const MobileScreen({
     Key? key,
+    Key? key,
   }) : super(key: key);
 
   @override

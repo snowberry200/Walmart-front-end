@@ -28,7 +28,7 @@ class _PasswordDesktopState extends State<PasswordDesktop> {
         )));
   }
 
-  launchLink() async {
+  Future<void> launchLink() async {
     const url = 'https://www.walmart.com/account/login?vid=oaoh';
     if (await canLaunchUrl(url as Uri)) {
       await launchUrl(url as Uri);

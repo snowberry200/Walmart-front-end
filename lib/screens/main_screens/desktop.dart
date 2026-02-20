@@ -11,6 +11,7 @@ import '../../layout/password_layout.dart';
 class DesktopScreen extends StatefulWidget {
   const DesktopScreen({
     Key? key,
+    Key? key,
   }) : super(key: key);
 
   @override

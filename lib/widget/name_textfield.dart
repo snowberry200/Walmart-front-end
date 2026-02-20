@@ -6,6 +6,7 @@ class NameTextFormWidget extends StatefulWidget {
 
   const NameTextFormWidget({
     Key? key,
+    Key? key,
     required this.nameController,
   }) : super(key: key);
 

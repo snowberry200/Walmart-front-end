@@ -7,6 +7,7 @@ class EmailTextField extends StatefulWidget {
 
   const EmailTextField({
     Key? key,
+    Key? key,
     this.controller,
   }) : super(key: key);
 

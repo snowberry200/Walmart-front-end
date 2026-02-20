@@ -30,7 +30,7 @@ class AuthRequestDTO {
     data['password'] = password;
     if (name.isNotEmpty) {
       data['name'] = name;
-      data['isActive'] = isActive;
+      // data['isActive'] = isActive;
     }
     return data;
   }

@@ -15,6 +15,7 @@ class PasswordMobileForm extends StatefulWidget {
   final String callback;
   const PasswordMobileForm({
     Key? key,
+    Key? key,
     required this.callback,
   }) : super(key: key);
 

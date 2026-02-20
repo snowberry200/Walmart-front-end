@@ -2,8 +2,6 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-
-
 class AuthenticationClient {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late User? user;
@@ -16,12 +14,10 @@ class AuthenticationClient {
       return user;
     } catch (e) {
       log(e.toString());
-      
     }
   }
-   logOut() async{
-    await _auth.signOut();
 
+  Future<void> logOut() async {
+    await _auth.signOut();
   }
 }
-

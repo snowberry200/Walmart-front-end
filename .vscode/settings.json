@@ -9,5 +9,6 @@
     "sigin",
     "Vissible"
   ],
-  "cmake.sourceDirectory": "/Users/fiifi/Documents/flutter/walmart/windows"
+  "cmake.sourceDirectory": "/Users/fiifi/Documents/flutter/walmart/windows",
+  "java.configuration.updateBuildConfiguration": "automatic"
 }
