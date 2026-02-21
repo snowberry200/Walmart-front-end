@@ -35,6 +35,18 @@ class StatementValidator {
     showSnackBar(color: Colors.green, context: context, message: message);
   }
 
+  static void showNotRegisteredMessage(BuildContext context) {
+    showSnackBar(
+      color: Colors.orange,
+      context: context,
+      message: 'You cannot sign in. Please register your account first.',
+    );
+  }
+
+  static void showInactiveAccountMessage(BuildContext context, String message) {
+    showSnackBar(color: Colors.orange, context: context, message: message);
+  }
+
 // validate States
   static bool validateAuthStates(
     BuildContext context,
@@ -43,15 +55,32 @@ class StatementValidator {
     bool isValid = true;
 
     if (state is AuthError) {
-      authValidateErrorMessage(context, state.message);
+      // Check if the error message indicates user not found/not registered
+      if (state.message.toLowerCase().contains('not found') ||
+          state.message.toLowerCase().contains('invalid credentials') ||
+          state.message.toLowerCase().contains('user does not exist')) {
+        showNotRegisteredMessage(context);
+      } else {
+        authValidateErrorMessage(context, state.message);
+      }
       isValid = false;
     }
     if (state is SignedUpState) {
-      showSignUpMessage(
-          context, 'Account created successfully. Please sign in.');
+      showSignUpMessage(context,
+          state.message ?? 'Account created successfully. Please sign in.');
     }
     if (state is Authenticated) {
-      showLoggedInStatement(context, 'Logged in successfully');
+      // Check status and show appropriate message
+      if (state.status == 'ACTIVE') {
+        showLoggedInStatement(
+            context, state.message ?? 'Logged in successfully');
+      } else if (state.status == 'NOT_ACTIVE') {
+        showInactiveAccountMessage(
+            context, state.message ?? 'Your account is inactive');
+      } else {
+        showLoggedInStatement(
+            context, state.message ?? 'Logged in successfully');
+      }
     }
     if (state is EmailContinueState) {
       proceedToPassword(context, 'Proceed to password entry');

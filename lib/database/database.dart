@@ -85,9 +85,9 @@ class Database {
   }
 
   Future<AuthResponseDTO> signup({
-    required name,
-    required email,
-    required password,
+    required String name,
+    required String email,
+    required String password,
   }) async {
     return await apiService
         .signup(AuthRequestDTO.forSignUp(name, email, password, true));

@@ -30,13 +30,22 @@ class EmailContinueState extends AuthState {
 
 class Authenticated extends AuthState {
   final String email;
+  final String status; // "ACTIVE" or "NOT_ACTIVE"
+  final String? message; // Optional message from backend
+  final Map<String, dynamic>? userData; // Additional user data if needed
+
   @override
   bool get isSignedIn => true;
 
-  const Authenticated({required this.email});
+  const Authenticated({
+    required this.email,
+    required this.status,
+    this.message,
+    this.userData,
+  });
 
   @override
-  List<Object?> get props => [email];
+  List<Object?> get props => [email, status, message, userData];
 }
 
 class SignedUpState extends AuthState {
