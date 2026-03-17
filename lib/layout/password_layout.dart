@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:walmart/auth_service/auth_service.dart';
 import 'package:walmart/bloc/auth_bloc.dart';
-import 'package:walmart/database/database.dart';
 
 import '../screens/password_screens/password_desktop.dart';
 import '../screens/password_screens/password_mobile_form.dart';
@@ -23,7 +23,7 @@ class _PasswordLayoutState extends State<PasswordLayout> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(database: Database()),
+      create: (context) => AuthBloc(authService: AuthService()),
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
         return constraints.maxWidth > 1200

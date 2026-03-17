@@ -22,8 +22,9 @@ class ApiService {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final responseData = jsonDecode(response.body);
-
+        
         return AuthResponseDTO.fromJson(responseData);
+
       } else if (response.statusCode == 400) {
         // Handle validation errors
         final errorData = jsonDecode(response.body);

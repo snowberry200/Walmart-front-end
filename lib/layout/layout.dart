@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walmart/bloc/auth_bloc.dart';
-import 'package:walmart/database/database.dart';
+import 'package:walmart/auth_service/auth_service.dart';
 
 import '../screens/main_screens/desktop.dart';
 import '../screens/main_screens/mobile.dart';
@@ -19,7 +19,7 @@ class _LayoutState extends State<Layout> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(database: Database()),
+      create: (context) => AuthBloc(authService: AuthService()),
       child: Scaffold(
         backgroundColor: CupertinoColors.white,
         body: LayoutBuilder(

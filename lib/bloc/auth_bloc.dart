@@ -2,12 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:walmart/Model/Response/auth_response_dto.dart';
 import 'package:walmart/bloc/auth_event.dart';
 import 'package:walmart/bloc/auth_state.dart';
-import 'package:walmart/database/database.dart';
+import 'package:walmart/auth_service/auth_service.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final Database database;
+  final AuthService authService;
 
-  AuthBloc({required this.database}) : super(AuthInitial()) {
+  AuthBloc({required this.authService}) : super(AuthInitial()) {
     on<SignInEvent>(_onSignInEvent);
     on<SignUpEvent>(_onSignUpEvent);
     on<EmailContinueEvent>(_onEmailContinueEvent);
@@ -36,11 +36,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     try {
       // Get the AuthResponseDTO from database signin
-      final AuthResponseDTO response =
-          await database.signin(email: event.email, password: event.password);
+      final AuthResponseDTO response = await authService.signin(
+          email: event.email, password: event.password);
 
       // Also call login if needed for firebase
-      await database.login(username: event.email, pass: event.password);
+      await authService.login(username: event.email, pass: event.password);
 
       // Determine status based on isActive from response
       // Convert bool to "ACTIVE"/"NOT_ACTIVE" string to match your Authenticated class
@@ -75,10 +75,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
 
     try {
-      await database.register(
+      await authService.register(
           name: event.name, username: event.email, password: event.password);
 
-      await database.signup(
+      await authService.signup(
           name: event.name, email: event.email, password: event.password);
 
       emit(SignedUpState('Account created successfully. Please sign in.',

@@ -120,7 +120,7 @@ class StatementValidator {
     if (password == null || password.isEmpty) {
       return 'Password field cannot be empty';
     } else if (password.length < 5) {
-      return 'Password cannot be less than 5 characters';
+      return ' "Password cannot be less than 5 characters:" #hint Abcde100%';
     }
     return null;
   }

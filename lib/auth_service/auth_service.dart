@@ -5,11 +5,11 @@ import 'package:walmart/Model/Request/auth_request_dto.dart';
 import 'package:walmart/Model/Response/auth_response_dto.dart';
 import 'package:walmart/service/auth_service.dart';
 
-class Database {
+class AuthService {
   final ApiService apiService;
   final firestore = FirebaseFirestore.instance;
 
-  Database() : apiService = ApiService(client: null);
+  AuthService() : apiService = ApiService(client: null);
 
   //for firebase
 
