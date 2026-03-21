@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walmart/bloc/auth_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:walmart/bloc/auth_state.dart'
     show AuthState, EmailContinueState;
 import 'package:walmart/widget/form_widget.dart';
 import 'package:walmart/widget/validator.dart';
+import 'package:walmart/widget/walmart_logo_tablet.dart';
 import '../../widget/others.dart';
 import '../../layout/password_layout.dart';
 
@@ -46,51 +48,40 @@ class _DesktopScreenState extends State<DesktopScreen> {
       builder: (context, state) {
         return Column(
           children: [
-            Expanded(flex: 1, child: SizedBox()),
+            // Main Content - Takes most space
             Expanded(
-              flex: 8,
-              child: Center(
-                child: SizedBox(
-                  width: width / 3,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 20,
-                          ),
-                          child: Container(
-                            width: width / 16,
-                            height: width / 16,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: AssetImage('images/wall.png'),
-                                    fit: BoxFit.cover)),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        text,
-                        const SizedBox(height: 10),
-                        Center(
-                          child: SizedBox(
-                            width: width / 2,
-                            child: FormWidget(),
-                          ),
-                        ),
-                      ]),
+              flex: 14,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    WalmartLogo(width: width / 2),
+                    const SizedBox(height: 20),
+                    text,
+                    const SizedBox(height: 10),
+                    Center(
+                      child: SizedBox(
+                        width: width / 4,
+                        child: FormWidget(),
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                  ],
                 ),
               ),
             ),
-            Expanded(child: const SizedBox()),
-            BottomAppBar(
-              elevation: 0,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 20.0, left: 10, top: 0, right: 10),
-                child: const OthersInfos(),
+            // Bottom Bar - Flexible height
+            Flexible(
+              flex: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: CupertinoColors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: OthersInfos(),
+                ),
               ),
             ),
           ],

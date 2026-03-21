@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walmart/bloc/auth_bloc.dart';
@@ -5,7 +6,7 @@ import 'package:walmart/bloc/auth_state.dart';
 import 'package:walmart/layout/password_layout.dart';
 import 'package:walmart/widget/form_widget.dart';
 import 'package:walmart/widget/validator.dart';
-
+import 'package:walmart/widget/walmart_logo_tablet.dart';
 import '../../widget/others.dart';
 
 class TabletScreen extends StatefulWidget {
@@ -21,54 +22,40 @@ class TabletScreenState extends State<TabletScreen> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    Text text = const Text(
+
+    final Text text = const Text(
       'Sign in to your Walmart account',
       style: TextStyle(
           fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'BogleWeb'),
     );
 
-    return BlocConsumer<AuthBloc, AuthState>(
-      listener: (context, state) {
-        // Handle auth state messages
-        StatementValidator.validateAuthStates(context, state);
-
-        // Handle navigation
-        if (state is EmailContinueState) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => PasswordLayout(email: state.email),
-            ),
-          );
-        }
-      },
-      builder: (context, state) {
-        return Column(
-          children: [
-            Expanded(flex: 1, child: SizedBox()),
-            Expanded(
-              flex: 6,
-              child: SizedBox(
-                child: Column(
+    return Scaffold(
+      backgroundColor: CupertinoColors.white,
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          StatementValidator.validateAuthStates(context, state);
+          if (state is EmailContinueState) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PasswordLayout(email: state.email),
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return Column(
+            children: [
+              // Main Content - Takes most space
+              Expanded(
+                flex: 14,
+                child: SingleChildScrollView(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 20,
-                        ),
-                        child: Container(
-                          width: width / 7,
-                          height: width / 7,
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: AssetImage('images/wall.png'),
-                                  fit: BoxFit.cover)),
-                        ),
-                      ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 20),
+                      WalmartLogo(width: width),
+                      const SizedBox(height: 20),
                       text,
                       const SizedBox(height: 10),
                       Center(
@@ -77,25 +64,28 @@ class TabletScreenState extends State<TabletScreen> {
                           child: FormWidget(),
                         ),
                       ),
-                      Expanded(child: const SizedBox()),
-                      BottomAppBar(
-                        elevation: 0,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 20.0, left: 10, top: 0, right: 10),
-                          child: ListView(
-                            children: [
-                              const OthersInfos(),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ]),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ],
-        );
-      },
+              // Bottom Bar - Flexible height
+              Flexible(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: CupertinoColors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: OthersInfos(),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
