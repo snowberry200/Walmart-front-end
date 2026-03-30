@@ -9,7 +9,7 @@ class OthersInfos extends StatelessWidget {
     bool isSmallScreen = width <= 670;
     bool isMediumScreen = width > 670 && width < 1200;
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: isSmallScreen
           ? _buildSmallScreenLayout()

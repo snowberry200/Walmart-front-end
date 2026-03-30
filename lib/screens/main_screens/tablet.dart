@@ -46,7 +46,6 @@ class TabletScreenState extends State<TabletScreen> {
         builder: (context, state) {
           return Column(
             children: [
-              // Main Content - Takes most space
               Expanded(
                 flex: 14,
                 child: SingleChildScrollView(
@@ -69,7 +68,6 @@ class TabletScreenState extends State<TabletScreen> {
                   ),
                 ),
               ),
-              // Bottom Bar - Flexible height
               Flexible(
                 flex: 1,
                 child: Container(
