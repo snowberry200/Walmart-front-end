@@ -4,8 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walmart/bloc/auth_bloc.dart' show AuthBloc;
 import 'package:walmart/bloc/auth_event.dart';
 import 'package:walmart/bloc/auth_state.dart';
-import 'package:walmart/widget/email_text_field.dart';
-import 'package:walmart/widget/name_textfield.dart';
+import 'package:walmart/widget/form_widget_factory.dart';
 import 'package:walmart/widget/password_field.dart';
 import 'package:walmart/widget/submit_button.dart';
 
@@ -56,17 +55,12 @@ class _FormWidgetState extends State<FormWidget> {
           key: formKey,
           child: Column(
             children: [
-              EmailTextField(
-                controller: emailController,
-              ),
+              FormWidgetFactory.createEmailTextField(emailController),
               const SizedBox(height: 20),
               if (!state.isSignedIn) ...[
-                NameTextFormWidget(
-                  nameController: nameController,
-                ),
+                FormWidgetFactory.createNameTextField(nameController),
                 const SizedBox(height: 20),
-                PasswordTextfield(
-                    controller: passwordController, key: passwordKey),
+                FormWidgetFactory.createPasswordTextfield(passwordController),
                 const SizedBox(height: 20),
               ],
               const SizedBox(height: 25),
