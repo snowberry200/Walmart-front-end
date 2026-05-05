@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:walmart/widget/form_widget.dart';
+import 'package:walmart/form/form_widget.dart';
 
 class SubmitButton extends StatefulWidget {
   final void Function() handleLogin;

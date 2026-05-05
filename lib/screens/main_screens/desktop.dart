@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walmart/bloc/auth_bloc.dart';
 import 'package:walmart/bloc/auth_state.dart'
     show AuthState, EmailContinueState;
-import 'package:walmart/widget/form_widget.dart';
+import 'package:walmart/form/form_widget.dart';
 import 'package:walmart/widget/validator.dart';
 import 'package:walmart/widget/walmart_logo_tablet.dart';
 import '../../widget/others.dart';

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walmart/bloc/auth_bloc.dart' show AuthBloc;
 import 'package:walmart/bloc/auth_event.dart';
 import 'package:walmart/bloc/auth_state.dart';
-import 'package:walmart/widget/form_widget_factory.dart';
+import 'package:walmart/form/form_widget_factory.dart';
 import 'package:walmart/widget/password_field.dart';
 import 'package:walmart/widget/submit_button.dart';
 
