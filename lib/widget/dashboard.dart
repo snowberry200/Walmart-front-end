@@ -1,6 +1,5 @@
 // lib/screens/dashboard.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:walmart/layout/layout.dart';
 
 class DashboardScreen extends StatefulWidget {
